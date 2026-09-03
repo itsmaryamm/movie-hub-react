@@ -1,0 +1,124 @@
+.favorites {
+  padding: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.favorites h2 {
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 2.5rem;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* =========================
+   FAVORITE MOVIES GRID
+   ========================= */
+
+.movies-grid {
+  display: grid;
+
+  /* 5 movies in one row */
+  grid-template-columns: repeat(5, 1fr);
+
+  gap: 1.5rem;
+  width: 100%;
+  align-items: start;
+}
+
+/* Keep each movie card inside its column */
+.movies-grid > * {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* =========================
+   EMPTY FAVORITES
+   ========================= */
+
+.favorites-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  margin: 2rem auto;
+  max-width: 600px;
+}
+
+.favorites-empty h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: #e50914;
+}
+
+.favorites-empty p {
+  color: #999;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+/* =========================
+   ANIMATION
+   ========================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+   ========================= */
+
+/* 4 movies */
+@media (max-width: 1200px) {
+  .movies-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* 3 movies */
+@media (max-width: 900px) {
+  .movies-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 2 movies */
+@media (max-width: 600px) {
+  .favorites {
+    padding: 1rem;
+  }
+
+  .movies-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .favorites h2 {
+    font-size: 2rem;
+  }
+}
+
+/* 1 movie */
+@media (max-width: 400px) {
+  .movies-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Keep favorites at five equal columns, even with fewer movies */
+.favorites .movies-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
